@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify, send_from_directory
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(_file_))
-FRONTEND_DIR = os.path.join(BASE_DIR, "../frontend")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, "..",/frontend")
 
-app = Flask(_name_, static_folder=FRONTEND_DIR, template_folder=FRONTEND_DIR)
+app = Flask(__name__, static_folder=FRONTEND_DIR, template_folder=FRONTEND_DIR)
 
 @app.route("/")
 def home():
@@ -16,6 +16,6 @@ def sos():
     print("🚨 SOS TRIGGERED:", data)
     return jsonify({"status": "sent"})
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)
